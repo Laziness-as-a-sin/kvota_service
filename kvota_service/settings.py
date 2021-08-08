@@ -42,7 +42,9 @@ INSTALLED_APPS = [
     'registration',
     'university',
     'firm',
-    'basic_user'
+    'basic_user',
+    'basic_data',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -81,11 +83,12 @@ WSGI_APPLICATION = 'kvota_service.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'dbk_s',
+        'USER': 'root',
+        'PASSWORD': 'Zdtkbrbq1'
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators

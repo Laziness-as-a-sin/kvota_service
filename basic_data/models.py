@@ -1,3 +1,115 @@
 from django.db import models
 
-# Create your models here.
+
+class City(models.Model):
+    """"""
+    name = models.CharField('название города', max_length=100)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        db_table = 'city'
+
+
+class Skill(models.Model):
+    name = models.CharField('название ключевого навыка', max_length=200)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        db_table = 'skill'
+
+
+class Education(models.Model):
+    name = models.CharField('образование', max_length=200)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        db_table = 'education'
+
+
+
+class WorkExperience(models.Model):
+    name = models.CharField('опыт работы', max_length=200)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        db_table = 'work_experience'
+
+
+class EmploymentType(models.Model):
+    name = models.CharField('тип занятости', max_length=200)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        db_table = 'employment_type'
+
+
+class Schedule(models.Model):
+    name = models.CharField('график работы', max_length=200)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        db_table = 'schedule'
+
+
+class DysfunctionBody(models.Model):
+    name = models.CharField('вид нарушения функций организма', max_length=200)
+    description = models.TextField('описание', blank=True)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        db_table = 'dysfunction_body'
+
+
+class RestrictionCategoriesLife(models.Model):
+    name = models.CharField('ограничения основных категорий жизнедеятельности', max_length=200)
+    description = models.TextField('описание', blank=True)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        db_table = 'restriction_category_life'
+
+
+class DisabilityGroup(models.Model):
+    name = models.CharField('группа инвалидности', max_length=200)
+    description = models.TextField('описание', blank=True)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        db_table = 'disability_group'
+
+
+class Profession(models.Model):
+    def contact_default():
+        return ""
+
+    name = models.CharField('название профессии', max_length=200)
+    boundProfession = models.ManyToManyField('self', blank=True, verbose_name='связанные профессии')
+    description = models.TextField('описание профессии', default=contact_default)
+    education = models.ManyToManyField(Education, blank=True)
+    dysfunctionBody = models.ManyToManyField(DysfunctionBody,  blank=True, verbose_name='связанный вид нарушения функций организма')
+    restrictionCategoriesLife = models.ManyToManyField(RestrictionCategoriesLife,  blank=True, verbose_name='связанный ограничения основных категорий жизнедеятельности')
+    disabilityGroup = models.ManyToManyField(DisabilityGroup,  blank=True, verbose_name='связанная группа инвалидности')
+    
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        db_table = 'profession'
