@@ -2,7 +2,7 @@ from django.db import models
 
 
 class City(models.Model):
-    """"""
+    """Таблица городов"""
     name = models.CharField('название города', max_length=100)
 
     def __str__(self):
@@ -13,6 +13,7 @@ class City(models.Model):
 
 
 class Skill(models.Model):
+    """Таблица навыков"""
     name = models.CharField('название ключевого навыка', max_length=200)
 
     def __str__(self):
@@ -23,6 +24,7 @@ class Skill(models.Model):
 
 
 class Education(models.Model):
+    """Таблица образования"""
     name = models.CharField('образование', max_length=200)
 
     def __str__(self):
@@ -34,6 +36,7 @@ class Education(models.Model):
 
 
 class WorkExperience(models.Model):
+    """Таблица опыта работы"""
     name = models.CharField('опыт работы', max_length=200)
 
     def __str__(self):
@@ -44,6 +47,7 @@ class WorkExperience(models.Model):
 
 
 class EmploymentType(models.Model):
+    """Таблица типов занятости"""
     name = models.CharField('тип занятости', max_length=200)
 
     def __str__(self):
@@ -54,6 +58,7 @@ class EmploymentType(models.Model):
 
 
 class Schedule(models.Model):
+    """Таблица графиков работы"""
     name = models.CharField('график работы', max_length=200)
 
     def __str__(self):
@@ -64,6 +69,7 @@ class Schedule(models.Model):
 
 
 class DysfunctionBody(models.Model):
+    """Таблица нарушений функций организма"""
     name = models.CharField('вид нарушения функций организма', max_length=200)
     description = models.TextField('описание', blank=True)
 
@@ -75,6 +81,7 @@ class DysfunctionBody(models.Model):
 
 
 class RestrictionCategoriesLife(models.Model):
+    """Таблица ограничений основных категорий жизнедеятельности"""
     name = models.CharField('ограничения основных категорий жизнедеятельности', max_length=200)
     description = models.TextField('описание', blank=True)
 
@@ -86,6 +93,7 @@ class RestrictionCategoriesLife(models.Model):
 
 
 class DisabilityGroup(models.Model):
+    """Таблица групп инвалидностей"""
     name = models.CharField('группа инвалидности', max_length=200)
     description = models.TextField('описание', blank=True)
 
@@ -97,6 +105,7 @@ class DisabilityGroup(models.Model):
 
 
 class Profession(models.Model):
+    """Таблица профессий"""
     def contact_default():
         return ""
 
